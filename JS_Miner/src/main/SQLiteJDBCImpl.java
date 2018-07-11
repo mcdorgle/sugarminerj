@@ -22,7 +22,7 @@ public class SQLiteJDBCImpl extends SQLiteJDBC {
          System.out.println("Opened database successfully");
 
          stmt = c.createStatement();
-         String sql = "CREATE TABLE COMPANY " +
+         String sql = "CREATE TABLE minerdata " +
                         "(ID INT PRIMARY KEY     NOT NULL," +
                         " sugar           INT    NOT NULL, " + 
                         " carbs            INT     NOT NULL, " + 
