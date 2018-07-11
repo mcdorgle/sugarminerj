@@ -1,27 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
-
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 /**
  *
- * @author mcdor
+ * @author hc-kr.com
  */
-import java.sql.*;
-
 public class SQLiteJDBC {
-  public static void main( String args[] ) {
-      Connection c = null;
-      
-      try {
-         Class.forName("org.sqlite.JDBC");
-         c = DriverManager.getConnection("jdbc:sqlite:test.db");
-      } catch ( Exception e ) {
-         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-         System.exit(0);
-      }
-      System.out.println("Opened database successfully");
-   }
+Connection conn = null;
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        ConnectDB();
+    }
+    public static Connection ConnectDB(){
+        try {
+            Class.forName("org.sqlite.JDBC");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:crud.s3db");
+            JOptionPane.showMessageDialog(null,"Connection Success!");
+            return conn;
+        } catch (ClassNotFoundException | SQLException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Connection failed ! " + e);
+            return null;
+        }
+    }
 }
