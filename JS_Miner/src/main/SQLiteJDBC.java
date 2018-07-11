@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.sql.*;
+
 /**
  *
  * @author hc-kr.com
@@ -20,7 +22,7 @@ Connection conn = null;
     public static Connection ConnectDB(){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:crud.s3db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:minerdb.s3db");
             JOptionPane.showMessageDialog(null,"Connection Success!");
             return conn;
         } catch (ClassNotFoundException | SQLException | HeadlessException e) {
