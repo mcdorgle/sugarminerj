@@ -51,6 +51,7 @@ public class MainFrm extends javax.swing.JFrame {
         InsulinInput = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         ExitBtnMain = new javax.swing.JButton();
+        ratiolblset = new javax.swing.JLabel();
         MainMenu = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         SettingsMenuIt = new javax.swing.JMenuItem();
@@ -110,6 +111,12 @@ public class MainFrm extends javax.swing.JFrame {
         );
 
         RatioLbl.setText("Ratio:");
+
+        RatioInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RatioInputActionPerformed(evt);
+            }
+        });
 
         SetUpdateBtn.setText("Update");
         SetUpdateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -173,6 +180,12 @@ public class MainFrm extends javax.swing.JFrame {
 
         InsulinLbl.setText("Insulin:");
 
+        RatioInputMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RatioInputMainActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Add Entry");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +204,8 @@ public class MainFrm extends javax.swing.JFrame {
                 ExitBtnMainActionPerformed(evt);
             }
         });
+
+        ratiolblset.setText(":1");
 
         javax.swing.GroupLayout MainFormPanelLayout = new javax.swing.GroupLayout(MainFormPanel);
         MainFormPanel.setLayout(MainFormPanelLayout);
@@ -215,10 +230,15 @@ public class MainFrm extends javax.swing.JFrame {
                                 .addGap(100, 100, 100)
                                 .addComponent(RatioLblMain)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(MainFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(InsulinInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RatioInputMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
+                        .addGroup(MainFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(MainFormPanelLayout.createSequentialGroup()
+                                .addComponent(InsulinInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27))
+                            .addGroup(MainFormPanelLayout.createSequentialGroup()
+                                .addComponent(RatioInputMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ratiolblset)
+                                .addGap(18, 18, 18)))
                         .addGroup(MainFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ExitBtnMain)
                             .addComponent(jButton1))))
@@ -246,7 +266,8 @@ public class MainFrm extends javax.swing.JFrame {
                     .addGroup(MainFormPanelLayout.createSequentialGroup()
                         .addGroup(MainFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(RatioInputMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ExitBtnMain))
+                            .addComponent(ExitBtnMain)
+                            .addComponent(ratiolblset))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(MainFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(InsulinInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,6 +381,14 @@ settingDlg.setBounds (400,0,350,250);
         updateSugars();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void RatioInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RatioInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RatioInputActionPerformed
+
+    private void RatioInputMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RatioInputMainActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RatioInputMainActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +451,7 @@ settingDlg.setBounds (400,0,350,250);
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel ratiolblset;
     private javax.swing.JDialog settingDlg;
     private javax.swing.JLabel verslabel;
     // End of variables declaration//GEN-END:variables

@@ -129,6 +129,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="RatioInput">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RatioInputActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="SetUpdateBtn">
           <Properties>
@@ -246,11 +249,18 @@
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="InsulinInput" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="RatioInputMain" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="InsulinInput" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="RatioInputMain" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="ratiolblset" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="ExitBtnMain" linkSize="4" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton1" linkSize="4" min="-2" max="-2" attributes="0"/>
@@ -282,6 +292,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="RatioInputMain" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ExitBtnMain" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ratiolblset" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -341,6 +352,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="RatioInputMain">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RatioInputMainActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="InsulinInput">
         </Component>
@@ -360,6 +374,11 @@
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ExitBtnMainMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitBtnMainActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ratiolblset">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=":1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
