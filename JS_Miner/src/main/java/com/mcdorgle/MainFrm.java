@@ -1,23 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mcdorgle;
 
-
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
  * @author mcdor
  */
 public class MainFrm extends javax.swing.JFrame {
-
+    private SugarsDatabase sugarsDatabase = new SugarsDatabase();
+    
     /**
      * Creates new form MainFrm
      */
     public MainFrm() {
         initComponents();
+        RatioInputMain.setText(sugarsDatabase.getRatio().toString());
+        updateSugars();
     }
 
     /**
@@ -175,6 +174,11 @@ public class MainFrm extends javax.swing.JFrame {
         InsulinLbl.setText("Insulin:");
 
         jButton1.setText("Add Entry");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         ExitBtnMain.setText("Exit");
         ExitBtnMain.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -304,7 +308,8 @@ public class MainFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItActionPerformed
-System.exit(0);        // TODO add your handling code here:
+        sugarsDatabase.close();
+        System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_exitMenuItActionPerformed
 
     private void aboutmnuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutmnuActionPerformed
@@ -329,7 +334,10 @@ settingDlg.setBounds (400,0,350,250);
     }//GEN-LAST:event_SettingsMenuItMousePressed
 
     private void SetUpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetUpdateBtnActionPerformed
-settingDlg.setVisible(false);
+        Integer ratio = Integer.parseInt(RatioInput.getText());
+        sugarsDatabase.setRatio(ratio);
+        settingDlg.setVisible(false);
+        RatioInputMain.setText(sugarsDatabase.getRatio().toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_SetUpdateBtnActionPerformed
 
@@ -338,8 +346,19 @@ settingDlg.setVisible(false);
     }//GEN-LAST:event_ExitBtnMainActionPerformed
 
     private void ExitBtnMainMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitBtnMainMousePressed
-dispose();        // TODO add your handling code here:
+        exitMenuItActionPerformed(null);
+        dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_ExitBtnMainMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Sugars sugars = new Sugars();
+        sugars.setSugar(Integer.parseInt(SugarInput.getText()));
+        sugars.setCarbs(Integer.parseInt(CarbsInput.getText()));
+        sugars.setInsulin(Integer.parseInt(InsulinInput.getText()));
+        sugars.setDatetime(LocalDateTime.now());
+        sugarsDatabase.addSugars(sugars);
+        updateSugars();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,6 +426,20 @@ dispose();        // TODO add your handling code here:
     private javax.swing.JLabel verslabel;
     // End of variables declaration//GEN-END:variables
 
+    private void updateSugars() {
+        List<Sugars> sugars = sugarsDatabase.getSugars();
+        String output = "";
+        for(Sugars sugar : sugars) {
+            String entry = String.format("sugars %d, carbs %d, insulin %d, Date Time %s",
+                    sugar.getSugar(),
+                    sugar.getCarbs(),
+                    sugar.getInsulin(),
+                    sugar.getDatetime().toString());
+            output += entry + "\n";
+        }
+        DataOutput.setText(output);
+    }
+    
     private static class jDialog {
 
         private static void setVisible(boolean b) {
